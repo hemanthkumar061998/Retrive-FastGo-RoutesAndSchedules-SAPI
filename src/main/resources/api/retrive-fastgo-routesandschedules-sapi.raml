@@ -1,0 +1,55 @@
+#%RAML 1.0
+title: Retrive-FastGo-RoutesAndSchedules-SAPI
+description: This API will retrive FastGO routes and schedules for system API
+uses:
+  common: /libraries/common/common-Business-library.raml
+  getSchedules: /libraries/schedules/getSchedules-Business-library.raml
+types:
+  getRoutes200Response: !include /libraries/routes/dataTypes/getRoute-200Response-dataType.raml
+  common400Response: !include /libraries/common/dataTypes/common-400Response-dataType.raml
+  common404Response: !include /libraries/common/dataTypes/common-404Response-dataType.raml
+  getSchedules200Response: !include /libraries/schedules/dataTypes/getSchedules-200Response-dataType.raml
+/{transportationType}:
+  /{transportCompany}:
+    /routes:
+      get:
+        is:
+          - common.transactioID
+        responses:
+          200:
+            body:
+              application/json:
+                type: getRoutes200Response
+                example: !include /libraries/routes/example/getRoutes-200Response-Example.json
+          400:
+            body:
+              application/json:
+                type: common400Response
+                example: !include /libraries/common/examples/common-400Response-Example.json
+          404:
+            body:
+              application/json:
+                type: common404Response
+                example: !include /libraries/common/examples/common-404Response-Example.json
+    /schedules:
+      get:
+        is:
+          - common.transactioID
+          - getSchedules.departureLOcation
+          - getSchedules.destinationLocation
+        responses:
+          200:
+            body:
+              application/json:
+                type: getSchedules200Response
+                example: !include /libraries/schedules/examples/getSchedule-200Response-Example.json
+          400:
+            body:
+              application/json:
+                type: common400Response
+                example: !include /libraries/common/examples/common-400Response-Example.json
+          404:
+            body:
+              application/json:
+                type: common404Response
+                example: !include /libraries/common/examples/common-404Response-Example.json

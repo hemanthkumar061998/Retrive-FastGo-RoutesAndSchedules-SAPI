@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd"><http:listener-config name="retrive-fastgo-routesandschedules-sapi-httpListenerConfig">
+        <http:listener-connection host="${http.listner.host}" port="${http.listner.port}" />
+    </http:listener-config>
+    <apikit:config name="retrive-fastgo-routesandschedules-sapi-config" api="retrive-fastgo-routesandschedules-sapi.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+	<configuration-properties doc:name="Configuration properties" doc:id="9e660d43-c093-4d6b-b543-b6d573293eb2" file="globalProperties\local.yaml" />
+	<http:request-config name="HTTP_Request_configuration-fastGo" doc:name="HTTP Request configuration" doc:id="a8c8c52d-3aa8-497a-a081-1434649be429" responseTimeout="60000">
+		<http:request-connection host="${http.requester.host}" port="${http.requester.port}" connectionIdleTimeout="40000"/>
+	</http:request-config>
+    
+</mule>

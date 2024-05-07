@@ -1,0 +1,9 @@
+http:
+  listner:  
+    host: "localhost"
+    port: "8000"
+  requester:
+    port: "8081"
+    host: "localhost"
+    pathRoutes: "/FastGo/getRoutes"
+    pathSchedules: "/FastGo/getSchedules"

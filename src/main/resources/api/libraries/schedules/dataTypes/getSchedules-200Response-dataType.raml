@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+type: array
+items:
+  type: object
+  properties:
+    departureDateTime:
+      type: string
+      required: true
+    fromLocation:
+      type: string
+      required: true
+    toLocation:
+      type: string
+      required: true
+    availableSeats:
+      type: integer
+      required: true

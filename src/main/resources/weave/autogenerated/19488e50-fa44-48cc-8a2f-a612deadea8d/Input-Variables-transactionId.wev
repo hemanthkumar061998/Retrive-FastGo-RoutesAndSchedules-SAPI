@@ -1,0 +1,4 @@
+%dw 2.0
+
+type auto_19488e50_fa44_48cc_8a2f_a612deadea8d_Input_Variables_transactionId = Any
+
